@@ -155,6 +155,7 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " Delete trailing white space on save (for C/CPP files)
 match ErrorMsg '\s\+$'
 autocmd FileType c,cpp,h,hpp autocmd BufWritePre <buffer> %s/\s\+$//e
+autocmd BufWritePre .vimrc,.bashrc %s/\s\+$//e
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Set default syntax for extension
@@ -162,9 +163,9 @@ autocmd FileType c,cpp,h,hpp autocmd BufWritePre <buffer> %s/\s\+$//e
 au BufRead,BufNewFile *.p16 set filetype=plm
 au BufRead,BufNewFile *.inc set filetype=plm
 
-" --------------------
-" TagList
-" --------------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TagList - Create the tag file using 'ctags -R' in the needed directory
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tags
 set tags=/home/tags
 " F4: Switch on/off TagList
@@ -229,11 +230,6 @@ endif
 set guifont=Inconsolata\ 9
 set nu
 set hlsearch
-
-"autopen NERDTree and focus cursor in new document
-"autocmd VimEnter * NERDTree
-"autocmd VimEnter * TlistOpen
-"autocmd VimEnter * wincmd p
 
 "OMNICPPCOMPLETE
 set nocp
