@@ -1,4 +1,15 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Config file .vimrc
+""
+"" Author: Adrien MARTIN
+"" Date: September 2016
+"" Scheme: https://github.com/altercation/Vim-colors-solarized
+""      By altercation
+""      => Setting scheme - see link above.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
@@ -60,6 +71,16 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
+
+" Set different background in terminal/gui mode
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
+
+" Set scheme (after installing it)
+"colorscheme solarized
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Search
@@ -251,8 +272,6 @@ let g:formatprg_args_c = "--mode=c --style=ansi -pHs4"
 let g:formatprg_args_cpp = "--mode=c --style=ansi -pHs4"
 map <Leader>f :Autoformat <CR>
 
-
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -312,6 +331,14 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" .vimrc easy use
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" source $MYVIMRC reloads the saved $MYVIMRC
+:nmap <Leader>s :source $MYVIMRC
+" opens $MYVIMRC for editing, or use :tabedit $MYVIMRC
+:nmap <Leader>v :e $MYVIMRC
 
 " Automaticaly reload .vimrc if changed
 augroup myvimrc
