@@ -73,11 +73,11 @@ set t_vb=
 set tm=500
 
 " Set different background in terminal/gui mode
-if has('gui_running')
-    set background=light
-else
-    set background=dark
-endif
+"if has('gui_running')
+"    set background=light
+"else
+"    set background=dark
+"endif
 
 " Set scheme (after installing it)
 "colorscheme solarized
@@ -173,10 +173,10 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Delete trailing white space on save (for C/CPP files)
+" Delete trailing white space on save (for C/CPP files, conf files and debug files)
 match ErrorMsg '\s\+$'
 autocmd FileType c,cpp,h,hpp autocmd BufWritePre <buffer> %s/\s\+$//e
-autocmd BufWritePre .vimrc,.bashrc %s/\s\+$//e
+autocmd BufWritePre .vimrc,.bashrc,*.gdb %s/\s\+$//e
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Set default syntax for extension
@@ -343,5 +343,5 @@ endfunction
 " Automaticaly reload .vimrc if changed
 augroup myvimrc
     au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYVIMRC | endif
 augroup END
