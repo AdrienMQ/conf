@@ -25,7 +25,6 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-
 # Stop after sending count ECHO_REQUEST packets #
 alias ping='ping -c 5'
 alias ports='netstat -tulanp'
@@ -45,8 +44,12 @@ shopt -s histappend
 shopt -s cmdhist
 
 # don't put duplicate lines in the history. See bash(1) for more options
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth
 export HISTIGNORE="ll:cd:cd .:cd ..:&:ls:[bf]g:exit"
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
 
 # set lttng default dir to /tmp. Needed to process lttng traces.
 export LTTNG_HOME=/tmp
